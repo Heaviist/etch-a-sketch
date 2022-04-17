@@ -1,0 +1,14 @@
+body {
+  
+}
+
+.box {
+  border: 5px solid rgb(0, 110, 255);
+  padding: 25px;
+  background-color: aqua;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+}
