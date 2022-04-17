@@ -1,6 +1,6 @@
 const gridSide = 16;
 const container = document.querySelector('#container');
-const viewPort = window.innerHeight;
+const viewPort = window.innerHeight-50;
 const boxSide = (viewPort - (viewPort % gridSide))/gridSide;
 console.log(viewPort, boxSide);
 
@@ -23,9 +23,3 @@ etchBox.forEach(box => {
     box.classList.add('etched');
   })
 });
-
-/*etchBox.forEach(box => {
-  box.addEventListener('mouseleave', () => {
-    box.classList.remove('etched');
-  })
-});*/
