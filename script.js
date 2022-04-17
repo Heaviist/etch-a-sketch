@@ -1,4 +1,4 @@
-const gridSide = 16;
+let gridSide = 16;
 const container = document.querySelector('#container');
 const viewPort = window.innerHeight-50;
 const boxSide = (viewPort - (viewPort % gridSide))/gridSide;
@@ -23,3 +23,9 @@ etchBox.forEach(box => {
     box.classList.add('etched');
   })
 });
+
+function reset() {
+  etchBox.forEach(box => {
+    box.classList.remove('etched');
+  });
+}
