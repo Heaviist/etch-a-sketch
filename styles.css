@@ -1,14 +1,18 @@
 body {
-  
+  background-color: beige;
 }
 
 .box {
-  border: 5px solid rgb(0, 110, 255);
-  padding: 25px;
-  background-color: aqua;
+  /*border: 5px solid rgb(0, 110, 255);*/
+  background-color: black;
 }
 
 #container {
   display: flex;
   justify-content: center;
+}
+
+.etched {
+  transition: 1s;
+  background-color: silver;
 }
