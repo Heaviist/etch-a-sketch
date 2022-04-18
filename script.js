@@ -10,6 +10,8 @@ topSection.style.width = `${containerHeight}px`;
 
 const colorCheckbox = document.querySelector('input[id="random-color"]');
 const gradientCheckbox = document.querySelector('input[id="colorful"]');
+//let colorCheck = colorCheckbox.checked; //most probably unused
+let gradientCheck = gradientCheckbox.checked; //checked variables to later set these manually. Tried using the checkbox values themselves, but then everything changes on checking the box instead of when reloading, obviously
 
 createGrid(gridSide); //initial grid
 
@@ -24,9 +26,9 @@ function createGrid(size) {
       const verticalBox = document.createElement('div');
       verticalBox.classList.add('box');
       verticalBox.style.padding = `${pixelSize}px`; //fill canvas with pixels with correct dimensions
-      if (gradientCheckbox.checked) {
+      if (gradientCheck) {
         verticalBox.style.backgroundColor = 'white';
-       // verticalBox.style.opacity = 0;
+        // verticalBox.style.opacity = 0;
       }
       horizontalContainer.appendChild(verticalBox); //Append boxes vertically to containers
     }
@@ -36,14 +38,14 @@ function createGrid(size) {
 
 function etch() {
   const etchBox = document.querySelectorAll('.box');
-  let etchColor = '';
+  let etchColor = ''; // create local variable to later set depending on state of game and make code simpler
 
   etchBox.forEach(box => {
     box.addEventListener('mouseover', () => {
       box.classList.add('etched');
       if (colorCheckbox.checked) {
         etchColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-      } else if (gradientCheckbox.checked) {
+      } else if (gradientCheck) {
         etchColor = 'black';
         //box.style.opacity += .5;
       } else {
@@ -63,7 +65,8 @@ function reset() {
     return;
   }
   container.innerHTML = '';
-  if (gradientCheckbox.checked) {
+  gradientCheck = gradientCheckbox.checked;
+  if (gradientCheck) {
     colorCheckbox.checked = false;
     colorCheckbox.disabled = true;
   } else {
