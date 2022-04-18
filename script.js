@@ -42,7 +42,6 @@ function etch() {
 
   etchBox.forEach(box => {
     box.addEventListener('mouseover', () => {
-      box.classList.add('etched');
       if (colorCheckbox.checked) {
         etchColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
       } else if (gradientCheck) {

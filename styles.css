@@ -29,6 +29,7 @@ button:active {
 
 .box {
   background-color: black;
+  transition: 1s;
 }
 
 #container:hover {
@@ -41,10 +42,6 @@ button:active {
   border: 10px solid goldenrod;
   border-radius: 15px;
   margin: auto;
-}
-
-.etched {
-  transition: 1s;
 }
 
 .top {
