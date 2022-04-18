@@ -9,6 +9,7 @@ container.style.height = `${containerHeight}px`;
 topSection.style.width = `${containerHeight}px`;
 
 const colorCheckbox = document.querySelector('input[id="random-color"]');
+const gradientCheckbox = document.querySelector('input[id="colorful"]');
 
 createGrid(gridSide); //initial grid
 
@@ -23,6 +24,10 @@ function createGrid(size) {
       const verticalBox = document.createElement('div');
       verticalBox.classList.add('box');
       verticalBox.style.padding = `${pixelSize}px`; //fill canvas with pixels with correct dimensions
+      if (gradientCheckbox.checked) {
+        verticalBox.style.backgroundColor = 'white';
+       // verticalBox.style.opacity = 0;
+      }
       horizontalContainer.appendChild(verticalBox); //Append boxes vertically to containers
     }
   }
@@ -31,23 +36,26 @@ function createGrid(size) {
 
 function etch() {
   const etchBox = document.querySelectorAll('.box');
+  let etchColor = '';
 
   etchBox.forEach(box => {
     box.addEventListener('mouseover', () => {
       box.classList.add('etched');
       if (colorCheckbox.checked) {
-        let randomColor = Math.floor(Math.random() * 16777215).toString(16);
-        box.style.backgroundColor = `#${randomColor}`;
+        etchColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+      } else if (gradientCheckbox.checked) {
+        etchColor = 'black';
+        //box.style.opacity += .5;
       } else {
-        box.style.backgroundColor = 'gold';
+        etchColor = 'gold';
       }
+      box.style.backgroundColor = etchColor;
     })
   });
 }
 
 function reset() {
   const newSize = prompt('How many pixels do you want each side of the canvas to have? (A maximum grid size of 100 is allowed)', '16');
-  console.log(newSize);
   if (newSize == null) { //if cancelled or invalid number, end the function so the etch is kept
     return;
   } else if (newSize >= 100 || newSize < 1) {
@@ -55,5 +63,11 @@ function reset() {
     return;
   }
   container.innerHTML = '';
+  if (gradientCheckbox.checked) {
+    colorCheckbox.checked = false;
+    colorCheckbox.disabled = true;
+  } else {
+    colorCheckbox.disabled = false;
+  }
   createGrid(newSize);
 }
