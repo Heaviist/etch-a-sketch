@@ -28,7 +28,7 @@ function createGrid(size) {
       verticalBox.style.padding = `${pixelSize}px`; //fill canvas with pixels with correct dimensions
       if (gradientCheck) {
         verticalBox.style.backgroundColor = 'white';
-        // verticalBox.style.opacity = 0;
+        verticalBox.style.opacity = 0; //In case of black and white canvas, let boxes start of with maximum opacity
       }
       horizontalContainer.appendChild(verticalBox); //Append boxes vertically to containers
     }
@@ -41,12 +41,14 @@ function etch() {
   let etchColor = ''; // create local variable to later set depending on state of game and make code simpler
 
   etchBox.forEach(box => {
-    box.addEventListener('mouseover', () => {
+    box.addEventListener('mouseover', function (e) {
       if (colorCheckbox.checked) {
         etchColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
       } else if (gradientCheck) {
         etchColor = 'black';
-        //box.style.opacity += .5;
+        let boxOpacity = +this.style.opacity; // read opacity every time the pixel is hovered
+        boxOpacity += 0.1; //change opacity by 10%
+        this.style.opacity = boxOpacity; //set new opacity value
       } else {
         etchColor = 'gold';
       }
