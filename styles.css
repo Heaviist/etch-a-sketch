@@ -18,12 +18,12 @@ button {
 
 .box {
   background-color: black;
+  padding: 25px;
 }
 
 #container {
   display: flex;
   justify-content: center;
-  margin:auto
 }
 
 .etched {
