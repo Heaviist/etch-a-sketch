@@ -30,6 +30,10 @@ button:active {
   background-color: black;
 }
 
+#container:hover {
+  cursor:cell;
+}
+
 #container {
   display: flex;
   justify-content: center;
@@ -40,5 +44,10 @@ button:active {
 
 .etched {
   transition: 1s;
-  background-color: gold;
+}
+
+.top {
+  display: flex;
+  margin: auto;
+  align-items: center;
 }

@@ -3,10 +3,10 @@ const container = document.querySelector('#container');
 
 const viewPortSize = window.innerHeight;
 const containerHeight = (viewPortSize - (viewPortSize % 100)) / 100 * 90;
-
 container.style.width = `${containerHeight}px`; //set canvas
 container.style.height = `${containerHeight}px`;
 
+const colorCheckbox = document.querySelector('input[id="random-color"]');
 
 createGrid(gridSide); //initial grid
 
@@ -33,6 +33,12 @@ function etch() {
   etchBox.forEach(box => {
     box.addEventListener('mouseover', () => {
       box.classList.add('etched');
+      if (colorCheckbox.checked) {
+        let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        box.style.backgroundColor = `#${randomColor}`;
+      } else {
+        box.style.backgroundColor = 'gold';
+      }
     })
   });
 }
@@ -40,7 +46,7 @@ function etch() {
 function reset() {
   const newSize = prompt('How many pixels do you want each side of the canvas to have? (A maximum grid size of 100 is allowed)', '16');
   console.log(newSize);
-  if (newSize == null) {
+  if (newSize == null) { //if cancelled or invalid number, end the function so the etch is kept
     return;
   } else if (newSize >= 100 || newSize < 1) {
     alert('Please enter a whole number between 0 and 100');
