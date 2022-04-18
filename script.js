@@ -1,10 +1,12 @@
 let gridSide = 16;
 const container = document.querySelector('#container');
+const topSection = document.querySelector('.top');
 
 const viewPortSize = window.innerHeight;
 const containerHeight = (viewPortSize - (viewPortSize % 100)) / 100 * 90;
 container.style.width = `${containerHeight}px`; //set canvas
 container.style.height = `${containerHeight}px`;
+topSection.style.width = `${containerHeight}px`;
 
 const colorCheckbox = document.querySelector('input[id="random-color"]');
 

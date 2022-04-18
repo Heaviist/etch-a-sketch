@@ -13,9 +13,17 @@
 <body>
 
   <div class="top">
-    <button onclick="reset()">Etch a new Sketch!</button>
-    <input type="checkbox" name="random" id="random-color">
-    <label for="random-color">Use random colors for etching</label>
+    <div class="reset-settings">
+      <div>
+      <input type="checkbox" name="colorful" id="colorful">
+      <label for="colorful">Black and White with gradient</label>
+    </div>
+      <button onclick="reset()">Etch a new Sketch!</button>
+    </div>
+    <div class="random-colors">
+      <input type="checkbox" name="random" id="random-color">
+      <label for="random-color">Use random colors for etching</label>
+    </div>
   </div>
 
   <div id="container"></div>
