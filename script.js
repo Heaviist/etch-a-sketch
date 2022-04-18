@@ -1,6 +1,14 @@
 let gridSide = 16;
 const container = document.querySelector('#container');
 
+const viewPortSize = window.innerHeight;
+const containerHeight = (viewPortSize - (viewPortSize % 100)) / 100 * 90;
+const pixelSize = (containerHeight / gridSide) / 2; // /2 because of padding going in both directions. This calculates the padding for the boxes which defines their size.
+
+container.style.width = `${containerHeight}px`; //set canvas
+container.style.height = `${containerHeight}px`;
+
+
 createGrid(gridSide); //initial grid
 
 function createGrid(size) {
@@ -11,13 +19,14 @@ function createGrid(size) {
     for (let j = 0; j < size; j++) {
       const verticalBox = document.createElement('div');
       verticalBox.classList.add('box');
+      verticalBox.style.padding = `${pixelSize}px`; //fill canvas with pixels with correct dimensions
       horizontalContainer.appendChild(verticalBox); //Append boxes vertically to containers
     }
   }
-  draw();
+  etch();
 }
 
-function draw() {
+function etch() {
   const etchBox = document.querySelectorAll('.box');
 
   etchBox.forEach(box => {

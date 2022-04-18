@@ -28,12 +28,14 @@ button:active {
 
 .box {
   background-color: black;
-  padding: 25px;
 }
 
 #container {
   display: flex;
   justify-content: center;
+  border: 10px solid goldenrod;
+  border-radius: 15px;
+  margin: auto;
 }
 
 .etched {
